@@ -1,0 +1,64 @@
+1.from news.models import * - импорт моделей из news
+
+2.nik=User.objects.create_user(username='Nikita') - создание пользователя Никита
+
+3.mary = User.objects.create_user(username='Mary') - создание пользователя Мария
+
+4.Author.objects.create(authorUser=nik) - создание автора Никита
+
+5.Author.objects.create(authorUser=mary) - создание автора Мария
+
+6.medic = Category.objects.create(name='medicine') - создание категории Медицина
+
+7.em = Category.objects.create(name='Economy') - создание категории Экономика
+
+8.sport = Category.objects.create(name='Sport') - создание категории Спорт
+
+9.jc = Category.objects.create(name='Jurisprudence') - создание категории Юриспурденция
+
+10.author=Author.objects.get(id=1) 
+Post.objects.create(author=author, categoryType='AR', title='Большунов в одиночку поднял сборную России в медальном зачёте.', text='В седьмой день Олимпиады у сборной России – серебро. Наш лыжник Александр Большунов стал вторым в лыжной разделке классикой.') - добавление постов
+
+11.author=Author.objects.get(id=2)
+Post.objects.create(author=author, categoryType='NW', title='В Минздраве сообщили о выдаче COVID-сертификатов по экспресс-тестам', text='Россияне с положительным результатом экспресс-теста на антиген к коронавирусу получат сертификаты переболевшего, сообщил ТАСС помощник министра здравоохранения России Алексей Кузнецов.') - добавление постов
+
+12.author=Author.objects.get(id=1)
+Post.objects.create(author=author, categoryType='AR', title='Набиуллина после повышения ставки надела брошку в виде весов', text='11 февраля Центробанк повысил ключевую ставку с 8,5 до 9,5%. Это стало новым максимумом с весны 2017 года — в апреле ставка была 9,75%, а в мае снизилась до 9,25%.') - добавление постов
+
+13.Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1) - добавление категорий к постам
+
+14.Post.objects.get(id=2).postCategory.add(Category.objects.get(id=2) - добавление категорий к постам
+
+15.Post.objects.get(id=3).postCategory.add(Category.objects.get(id=1) - добавление категорий к постам
+
+16.Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=1).authorUser, text='Болеем за наших, вперед Россия!') - добавление коментариев к постам
+
+17.Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=1).authorUser, text='Большунов лучший)') - добавление коментариев к постам
+
+18.Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=1).authorUser, text='Когда уже этот коронавирус исчезнет?(') - добавление коментариев к постам
+
+19.Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=1).authorUser, text='Все им мало!') - добавление коментариев к постам
+
+Post.objects.get(id=2).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).dislike()
+Post.objects.get(id=1).like()
+Post.objects.get(id=1).like()
+Post.objects.get(id=2).like()
+Post.objects.get(id=1).like()
+Comment.objects.get(id=3).like()
+Comment.objects.get(id=3).like()
+Comment.objects.get(id=3).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+
+
+
+
+
+
+
+
+
+
+
